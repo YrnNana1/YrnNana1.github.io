@@ -421,7 +421,117 @@
             padding: 2rem 0;
         }
 
-        /* Responsive Design */
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 2% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            text-align: center;
+        }
+
+        .results-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-description {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .results-description h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
         @media (max-width: 768px) {
             .nav-links {
                 gap: 1rem;
@@ -630,7 +740,7 @@
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/YrnNana1/Spam_Or_Ham_AI_Training" target="_blank" class="project-link">GitHub</a>
-                            <a href="#" class="project-link">View Results</a>
+                            <a href="#" class="project-link" onclick="openModal('resultsModal')">View Results</a>
                         </div>
                     </div>
                 </div>
@@ -666,6 +776,51 @@
         </div>
     </section>
 
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Spam or Ham AI Training Results</h2>
+                <button class="close-btn" onclick="closeModal('resultsModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABkAAAAOeCAYAAAC6uyWwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7J0FlBXX1vav/3cOd3d3d3d3d3d3d3d3d3eBgLu7u7u7u7u7u7u7u7u7u7s7BNQB3g/9dqtPd093T3f1dE/PzKz1rtOz6lbdqnvvPXX3rbv3PafOMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" class="results-image" alt="Spam Classification Results">
+                
+                <div class="results-description">
+                    <h3>Model Performance Analysis</h3>
+                    <p>This screenshot shows the output of my Naive Bayes spam classification system in action. The model successfully processes email samples and provides both binary predictions (spam/ham) and probability scores for each classification.</p>
+                    
+                    <div class="results-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">94%</div>
+                            <div class="stat-label">Classification Accuracy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">40%</div>
+                            <div class="stat-label">Processing Time Reduction</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">1401</div>
+                            <div class="stat-label">Dataset Entries</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">Python + NLP</div>
+                            <div class="stat-label">Technology Stack</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 15px;"><strong>Key Features Demonstrated:</strong></p>
+                    <ul style="text-align: left; margin-left: 20px;">
+                        <li>Real-time email classification with probability scores</li>
+                        <li>Optimized data transformation pipelines</li>
+                        <li>Robust performance across diverse email formats</li>
+                        <li>Custom frequency matrix vectorization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -674,6 +829,32 @@
     </footer>
 
     <script>
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('resultsModal');
+            if (event.target === modal) {
+                closeModal('resultsModal');
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal('resultsModal');
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
