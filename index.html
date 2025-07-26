@@ -810,7 +810,34 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <a href="#" id="vrDownloadLink" class="download-btn" onclick="downloadVRProject()" style="
+                        <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                            <h4 style="color: #333; margin-bottom: 10px;">📋 Download Link:</h4>
+                            <div style="background: white; padding: 12px; border-radius: 5px; border: 1px solid #ddd; margin-bottom: 10px;">
+                                <input type="text" id="downloadLink" readonly value="https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=k6vubb87&dl=0" style="
+                                    width: 100%;
+                                    border: none;
+                                    background: transparent;
+                                    font-family: monospace;
+                                    font-size: 0.9rem;
+                                    color: #333;
+                                    text-align: center;
+                                ">
+                            </div>
+                            <button onclick="copyDownloadLink()" style="
+                                background: #667eea;
+                                color: white;
+                                border: none;
+                                padding: 8px 16px;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-weight: 500;
+                                transition: background 0.3s ease;
+                            " onmouseover="this.style.background='#5a6fd8'" onmouseout="this.style.background='#667eea'">
+                                📋 Copy Link
+                            </button>
+                        </div>
+                        
+                        <a href="https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=k6vubb87&dl=0" target="_blank" style="
                             display: inline-block;
                             padding: 15px 30px;
                             background: linear-gradient(45deg, #667eea, #764ba2);
@@ -822,7 +849,7 @@
                             transition: all 0.3s ease;
                             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
                         ">
-                            📥 Download VR Project (.zip)
+                            🔗 Open Download Page
                         </a>
                         <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">
                             File size: ~50MB | Last updated: March 2025
@@ -886,23 +913,27 @@
     </footer>
 
     <script>
-        // Download VR project function
-        function downloadVRProject() {
-            // Dropbox direct download link
-            const zipFileUrl = "https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=xwwoda2i&dl=1";
+        // Copy download link function
+        function copyDownloadLink() {
+            const linkInput = document.getElementById('downloadLink');
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999); // For mobile devices
             
-            // Create a temporary link element and trigger download
-            const link = document.createElement('a');
-            link.href = zipFileUrl;
-            link.download = 'VR_Art_Gallery_Project.zip';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Close the modal after initiating download
-            setTimeout(() => {
-                closeModal('vrDownloadModal');
-            }, 500);
+            try {
+                document.execCommand('copy');
+                // Show feedback
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✅ Copied!';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = '#667eea';
+                }, 2000);
+            } catch (err) {
+                alert('Please manually copy the link above');
+            }
         }
 
         // Modal functions
