@@ -696,8 +696,8 @@
                 <div class="project-card animate-on-scroll">
                     <div class="project-image">🗂️</div>
                     <div class="project-content">
-                        <h3 class="project-title">External Sort with Buffer Pool Management</h3>
-                        <p class="project-description">Implemented an optimized external sorting system in Java that processes binary files through a custom-designed buffer pool with LRU cache replacement policy, handling files up to 1000 blocks (4MB) while minimizing disk I/O operations.</p>
+                        <h3 class="project-title">Virtual Sort System with Buffer Pool</h3>
+                        <p class="project-description">Engineered a custom Quicksort in Java to sort large binary files directly on disk by virtualizing array operations through an LRU-managed buffer pool, minimizing disk I/O and boosting performance.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Java</span>
                             <span class="tech-tag">LRU Caching</span>
@@ -705,8 +705,8 @@
                             <span class="tech-tag">Algorithm Optimization</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">View Details</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="#" class="project-link" onclick="openModal('virtualSortModal')">View Details</a>
+                            <a href="https://github.com/YrnNana1/Virtual-Sort" target="_blank" class="project-link">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -777,6 +777,132 @@
             </div>
         </div>
     </section>
+
+    <!-- Virtual Sort Details Modal -->
+    <div id="virtualSortModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Virtual Sort System with Buffer Pool</h2>
+                <button class="close-btn" onclick="closeModal('virtualSortModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 4rem; margin-bottom: 15px;">🗂️</div>
+                    <h3 style="color: #667eea; margin-bottom: 10px;">Advanced Systems Programming Project</h3>
+                    <p style="color: #666; margin-bottom: 20px;">A sophisticated file-based sorting system demonstrating advanced systems programming concepts through custom buffer pool management.</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                    <h4 style="color: #333; margin-bottom: 15px;">📋 Project Overview</h4>
+                    <p style="color: #666; line-height: 1.6;">This project implements a sophisticated file-based sorting system that demonstrates advanced systems programming concepts by virtualizing memory operations through a custom buffer pool management system. The implementation sorts large binary files directly on disk using a modified Quicksort algorithm, showcasing the intersection of algorithm design and low-level system optimization.</p>
+                </div>
+
+                <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                    <h4 style="color: #1976d2; margin-bottom: 15px;">🏗️ Technical Architecture</h4>
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">BufferPool Management System</h5>
+                        <ul style="color: #666; margin-left: 20px; line-height: 1.6;">
+                            <li>Implements Least Recently Used (LRU) replacement policy for optimal memory utilization</li>
+                            <li>Manages 4096-byte blocks (1024 records each) with intelligent caching strategies</li>
+                            <li>Tracks dirty flags, timestamps, and block metadata for efficient I/O operations</li>
+                            <li>Provides transparent virtualization layer between algorithm and disk storage</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">Modified Quicksort Algorithm</h5>
+                        <ul style="color: #666; margin-left: 20px; line-height: 1.6;">
+                            <li>Adapts traditional in-memory Quicksort to work with disk-based virtual memory</li>
+                            <li>Small files (≤5000 records): In-memory sorting with Java's optimized Arrays.sort</li>
+                            <li>Medium files (≤50000 records): Optimized merge sort with insertion sort for small subarrays</li>
+                            <li>Large files (>50000 records): Chunked sorting with progressive merging</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: #fff3cd; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                    <h4 style="color: #856404; margin-bottom: 15px;">⚡ Key Technical Features</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div>
+                            <h5 style="color: #333; margin-bottom: 10px;">Performance Optimizations</h5>
+                            <ul style="color: #666; margin-left: 20px; font-size: 0.9rem;">
+                                <li>Adaptive Algorithm Selection</li>
+                                <li>Buffer Pool Efficiency</li>
+                                <li>Hybrid Sorting Approach</li>
+                                <li>Memory-Conscious Design</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: #333; margin-bottom: 10px;">Advanced Systems Programming</h5>
+                            <ul style="color: #666; margin-left: 20px; font-size: 0.9rem;">
+                                <li>Virtual Memory Simulation</li>
+                                <li>Low-Level File Operations</li>
+                                <li>Resource Management</li>
+                                <li>Concurrent-Safe Design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #d4edda; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                    <h4 style="color: #155724; margin-bottom: 15px;">🚀 Implementation Highlights</h4>
+                    <div style="margin-bottom: 15px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">Algorithm Adaptivity</h5>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; overflow-x: auto;">
+                            <code style="color: #d63384;">if</code> (numRecords <= 5000) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;sortSmallFile(bufferPool, numRecords);<br>
+                            } <code style="color: #d63384;">else if</code> (numRecords <= 50000) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;optimizedMergeSort(bufferPool, 0, numRecords - 1);<br>
+                            } <code style="color: #d63384;">else</code> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;optimizedSortForLargeFiles(bufferPool, numRecords);<br>
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <h5 style="color: #333; margin-bottom: 10px;">Buffer Pool Architecture</h5>
+                        <ul style="color: #666; margin-left: 20px; line-height: 1.6;">
+                            <li>Transparent data access through getBlock() and setRecord() methods</li>
+                            <li>Automatic dirty page tracking and write-back policies</li>
+                            <li>Comprehensive I/O statistics collection for performance analysis</li>
+                            <li>Robust error handling for file boundary conditions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: #f8d7da; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                    <h4 style="color: #721c24; margin-bottom: 15px;">🔧 Technical Specifications</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <h6 style="color: #667eea; margin-bottom: 8px;">Language & Format</h6>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Java, Binary files with 4-byte records</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <h6 style="color: #667eea; margin-bottom: 8px;">Block Management</h6>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">4096-byte blocks, LRU replacement</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <h6 style="color: #667eea; margin-bottom: 8px;">Performance</h6>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Cache hits, disk I/O optimization</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <h6 style="color: #667eea; margin-bottom: 8px;">Testing</h6>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">1-50+ blocks, comprehensive benchmarks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #e2e3e5; padding: 20px; border-radius: 10px;">
+                    <h4 style="color: #383d41; margin-bottom: 15px;">💡 Real-World Applications</h4>
+                    <p style="color: #666; margin-bottom: 15px;">This project demonstrates concepts directly applicable to:</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                        <div style="color: #666; font-size: 0.9rem;">• Database management systems</div>
+                        <div style="color: #666; font-size: 0.9rem;">• Operating systems</div>
+                        <div style="color: #666; font-size: 0.9rem;">• Big data processing</div>
+                        <div style="color: #666; font-size: 0.9rem;">• File system optimization</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- VR Download Modal -->
     <div id="vrDownloadModal" class="modal">
