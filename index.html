@@ -440,10 +440,12 @@
             padding: 20px;
             width: 90%;
             max-width: 1200px;
+            max-height: 90vh;
             background: white;
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideIn 0.3s ease;
+            overflow-y: auto;
         }
 
         @keyframes fadeIn {
@@ -790,6 +792,52 @@
                         <h3 style="color: #667eea; margin-bottom: 10px;">Complete Unity VR Project</h3>
                         <p style="color: #666; margin-bottom: 20px;">Download the full source code, assets, and project files for the VR Art Gallery built with Unity and C#.</p>
                     </div>
+
+                    <!-- Download Link Section - Moved Up -->
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="background: #f0f0f0; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h4 style="color: #333; margin-bottom: 15px; font-size: 1.2rem;">📋 Download Link:</h4>
+                            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #667eea; margin-bottom: 15px;">
+                                <input type="text" id="downloadLink" readonly value="https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=k6vubb87&dl=0" style="
+                                    width: 100%;
+                                    border: none;
+                                    background: transparent;
+                                    font-family: monospace;
+                                    font-size: 0.9rem;
+                                    color: #333;
+                                    text-align: center;
+                                    padding: 5px;
+                                ">
+                            </div>
+                            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                                <button onclick="copyDownloadLink()" style="
+                                    background: #667eea;
+                                    color: white;
+                                    border: none;
+                                    padding: 12px 20px;
+                                    border-radius: 8px;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                    transition: background 0.3s ease;
+                                " onmouseover="this.style.background='#5a6fd8'" onmouseout="this.style.background='#667eea'">
+                                    📋 Copy Link
+                                </button>
+                                
+                                <a href="https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=k6vubb87&dl=0" target="_blank" style="
+                                    display: inline-block;
+                                    padding: 12px 20px;
+                                    background: #28a745;
+                                    color: white;
+                                    text-decoration: none;
+                                    border-radius: 8px;
+                                    font-weight: 600;
+                                    transition: all 0.3s ease;
+                                ">
+                                    🔗 Open Download Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="download-details" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
                         <h4 style="color: #333; margin-bottom: 15px;">📋 What's Included:</h4>
@@ -807,53 +855,6 @@
                     <div class="tech-requirements" style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
                         <h4 style="color: #1976d2; margin-bottom: 10px;">🛠️ Requirements:</h4>
                         <p style="color: #333; margin: 0;">Unity 2022.3 LTS or newer, Meta Quest SDK, C# development environment</p>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                            <h4 style="color: #333; margin-bottom: 10px;">📋 Download Link:</h4>
-                            <div style="background: white; padding: 12px; border-radius: 5px; border: 1px solid #ddd; margin-bottom: 10px;">
-                                <input type="text" id="downloadLink" readonly value="https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=k6vubb87&dl=0" style="
-                                    width: 100%;
-                                    border: none;
-                                    background: transparent;
-                                    font-family: monospace;
-                                    font-size: 0.9rem;
-                                    color: #333;
-                                    text-align: center;
-                                ">
-                            </div>
-                            <button onclick="copyDownloadLink()" style="
-                                background: #667eea;
-                                color: white;
-                                border: none;
-                                padding: 8px 16px;
-                                border-radius: 5px;
-                                cursor: pointer;
-                                font-weight: 500;
-                                transition: background 0.3s ease;
-                            " onmouseover="this.style.background='#5a6fd8'" onmouseout="this.style.background='#667eea'">
-                                📋 Copy Link
-                            </button>
-                        </div>
-                        
-                        <a href="https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=k6vubb87&dl=0" target="_blank" style="
-                            display: inline-block;
-                            padding: 15px 30px;
-                            background: linear-gradient(45deg, #667eea, #764ba2);
-                            color: white;
-                            text-decoration: none;
-                            border-radius: 50px;
-                            font-weight: 600;
-                            font-size: 1.1rem;
-                            transition: all 0.3s ease;
-                            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-                        ">
-                            🔗 Open Download Page
-                        </a>
-                        <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">
-                            File size: ~50MB | Last updated: March 2025
-                        </p>
                     </div>
                 </div>
             </div>
