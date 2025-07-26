@@ -722,7 +722,7 @@
                         </div>
                         <div class="project-links">
                             <a href="https://youtube.com/shorts/p3p47JisSKA" target="_blank" class="project-link">Live Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                            <a href="#" class="project-link" onclick="openModal('vrDownloadModal')">Download Project</a>
                         </div>
                     </div>
                 </div>
@@ -775,6 +775,63 @@
             </div>
         </div>
     </section>
+
+    <!-- VR Download Modal -->
+    <div id="vrDownloadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Download VR Art Gallery Project</h2>
+                <button class="close-btn" onclick="closeModal('vrDownloadModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="download-info">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="font-size: 4rem; margin-bottom: 15px;">📦</div>
+                        <h3 style="color: #667eea; margin-bottom: 10px;">Complete Unity VR Project</h3>
+                        <p style="color: #666; margin-bottom: 20px;">Download the full source code, assets, and project files for the VR Art Gallery built with Unity and C#.</p>
+                    </div>
+                    
+                    <div class="download-details" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                        <h4 style="color: #333; margin-bottom: 15px;">📋 What's Included:</h4>
+                        <ul style="text-align: left; margin-left: 20px; color: #666;">
+                            <li>Complete Unity project files (.unity, .cs scripts)</li>
+                            <li>C# scripts for VR interaction and navigation</li>
+                            <li>Art gallery assets and 3D models</li>
+                            <li>Meta Quest 3 integration code</li>
+                            <li>Teleportation and head tracking systems</li>
+                            <li>Performance optimization scripts</li>
+                            <li>Documentation and setup instructions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-requirements" style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+                        <h4 style="color: #1976d2; margin-bottom: 10px;">🛠️ Requirements:</h4>
+                        <p style="color: #333; margin: 0;">Unity 2022.3 LTS or newer, Meta Quest SDK, C# development environment</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <a href="#" id="vrDownloadLink" class="download-btn" onclick="downloadVRProject()" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            background: linear-gradient(45deg, #667eea, #764ba2);
+                            color: white;
+                            text-decoration: none;
+                            border-radius: 50px;
+                            font-weight: 600;
+                            font-size: 1.1rem;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+                        ">
+                            📥 Download VR Project (.zip)
+                        </a>
+                        <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">
+                            File size: ~50MB | Last updated: March 2025
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Results Modal -->
     <div id="resultsModal" class="modal">
@@ -829,6 +886,25 @@
     </footer>
 
     <script>
+        // Download VR project function
+        function downloadVRProject() {
+            // Dropbox direct download link
+            const zipFileUrl = "https://www.dropbox.com/scl/fi/n4cpbpr7sg14niz91stz2/VR-Art-Gallery.zip?rlkey=poczmpr3h5vxv4u1g9e7g7wth&st=xwwoda2i&dl=1";
+            
+            // Create a temporary link element and trigger download
+            const link = document.createElement('a');
+            link.href = zipFileUrl;
+            link.download = 'VR_Art_Gallery_Project.zip';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Close the modal after initiating download
+            setTimeout(() => {
+                closeModal('vrDownloadModal');
+            }, 500);
+        }
+
         // Modal functions
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
